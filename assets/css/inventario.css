@@ -1,0 +1,67 @@
+header {
+    text-align: center;
+    padding: 20px;
+    background: #222;
+    color: white;
+}
+
+#formulario {
+    text-align: center;
+    margin: 20px;
+}
+
+#formulario input {
+    margin: 5px;
+    padding: 8px;
+}
+
+#formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#formulario input,
+#formulario textarea {
+    width: 250px;
+    margin: 5px;
+    padding: 8px;
+}
+
+#formulario textarea {
+    height: 80px;
+    resize: none;
+}
+
+#listaProductos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.bajo-stock {
+    border: 2px solid orange;
+}
+
+.sin-stock {
+    border: 2px solid red;
+}
+
+#filtros {
+    text-align: center;
+    margin: 10px;
+}
+
+#busquedaInventario {
+    padding: 8px;
+    width: 250px;
+    margin-bottom: 10px;
+}

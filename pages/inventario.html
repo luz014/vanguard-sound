@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventario - Vanguard Sound</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/inventario.css">
+</head>
+<body>
+
+    <header>
+        <h1>Gestión de Inventario</h1>
+    </header>
+
+    <!-- FORMULARIO -->
+    <section id="formulario">
+        <h2>Agregar / Editar Producto</h2>
+
+        <input type="hidden" id="id">
+
+        <input type="text" id="nombre" placeholder="Nombre">
+        <input type="number" id="precio" placeholder="Precio">
+        <input type="number" id="stock" placeholder="Stock">
+        <input type="text" id="categoria" placeholder="Categoría">
+
+        <!-- 🔥 NUEVO -->
+        <textarea id="descripcion" placeholder="Descripción del producto"></textarea>
+        <input type="file" id="imagen" accept="image/*">
+
+        <button onclick="guardarProducto()">Guardar</button>
+    </section>
+
+    <!-- FILTROS -->
+    <section id="filtros">
+        <input type="text" id="busquedaInventario" placeholder="Buscar por nombre, categoría o descripción...">
+        <button onclick="filtrar('todos')">Todos</button>
+        <button onclick="filtrar('bajo')">Bajo Stock</button>
+        <button onclick="filtrar('sin')">Sin Stock</button>
+    </section>
+
+    <!-- LISTA -->
+    <section id="listaProductos"></section>
+
+    <!-- SCRIPTS -->
+    <script src="../assets/data/productos.js"></script>
+    <script src="../assets/js/inventario/inventario.js"></script>
+
+</body>
+</html>

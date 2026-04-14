@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Venta - Vanguard Sound</title>
+    <link rel="stylesheet" href="../assets/css/vendedor.css">
+</head>
+<body>
+
+    <h1>Venta</h1>
+
+    <div id="listaVenta"></div>
+    <h2 id="totalVenta"></h2>
+
+    <button onclick="confirmarVenta()">Confirmar Venta</button>
+    <button onclick="cancelarVenta()">Cancelar</button>
+    <button onclick="volver()">Volver</button>
+
+    <div id="factura" style="display:none;">
+        <h2>Factura</h2>
+        <div id="detalleFactura"></div>
+    </div>
+
+    <script src="../assets/libs/html2canvas.min.js"></script>
+    <script src="../assets/libs/jspdf.min.js"></script>
+    <script src="../assets/data/productos.js"></script>
+    <script src="../assets/js/vendedor/ventas.js"></script>
+
+</body>
+</html>

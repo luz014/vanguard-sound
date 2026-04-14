@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cliente - Vanguard Sound</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/cliente.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <h1>Catálogo de Productos</h1>
+
+        <input type="text" id="busqueda" placeholder="Buscar producto...">
+
+        <button onclick="irCarrito()">
+            🛒 Carrito (<span id="contadorCarrito">0</span>)
+        </button>
+
+        <button onclick="irHistorial()">Historial</button>
+    </header>
+
+    <!-- FILTROS -->
+    <section id="filtros">
+        <select id="categoria">
+            <option value="">Todas las categorías</option>
+            <option value="Guitarras">Guitarras</option>
+            <option value="Baterías">Baterías</option>
+            <option value="Bajos">Bajos</option>
+        </select>
+
+        <select id="orden">
+            <option value="">Ordenar</option>
+            <option value="precio-asc">Precio ↑</option>
+            <option value="precio-desc">Precio ↓</option>
+        </select>
+    </section>
+
+    <!-- CATÁLOGO -->
+    <main id="catalogo"></main>
+
+    <!-- FACTURA (OCULTA) -->
+    <div id="factura" style="display:none; background:white; color:black; padding:20px;">
+        <h2>Factura</h2>
+        <div id="detalleFactura"></div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="../assets/libs/html2canvas.min.js"></script>
+    <script src="../assets/libs/jspdf.min.js"></script>
+    <script src="../assets/data/productos.js"></script>
+    <script src="../assets/js/cliente/catalogo.js"></script>
+    <script src="../assets/js/cliente/carrito.js"></script>
+
+</body>
+</html>

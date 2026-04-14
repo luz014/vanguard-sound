@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Carrito - Vanguard Sound</title>
+    <link rel="stylesheet" href="../assets/css/cliente.css">
+</head>
+<body>
+
+    <h1>Carrito de Compras</h1>
+
+    <div id="carrito"></div>
+    <h2 id="total"></h2>
+
+    <button onclick="realizarCompra()">Comprar</button>
+    <button onclick="volver()">Volver</button>
+
+    <div id="factura" style="display:none;">
+        <h2>Factura</h2>
+        <div id="detalleFactura"></div>
+    </div>
+
+    <script src="../assets/libs/html2canvas.min.js"></script>
+    <script src="../assets/libs/jspdf.min.js"></script>
+    <script src="../assets/data/productos.js"></script>
+    <script src="../assets/js/cliente/carrito.js"></script>
+
+</body>
+</html>

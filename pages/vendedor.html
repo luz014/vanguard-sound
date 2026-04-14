@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Vendedor - Vanguard Sound</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/vendedor.css">
+</head>
+<body>
+
+    <header>
+        <h1>Punto de Venta</h1>
+        <input type="text" id="busquedaVendedor" placeholder="Buscar producto...">
+
+
+        <!-- <button onclick="irVenta()">Ir a Venta</button> -->
+        
+    </header>
+
+    <main class="contenedor">
+
+        <!-- LISTA PRODUCTOS -->
+        <section id="productos"></section>
+
+        <!-- VENTA ACTUAL -->
+        <section id="venta">
+            <h2>Venta Actual</h2>
+            <div id="listaVenta"></div>
+            <h3 id="totalVenta">Total: $0</h3>
+
+            <button onclick="confirmarVenta()">Confirmar Venta</button>
+            <button onclick="cancelarVenta()">Cancelar</button>
+        </section>
+
+    </main>
+
+    <!-- FACTURA -->
+    <div id="factura" style="display:none; background:white; color:black; padding:20px;">
+        <h2>Factura</h2>
+        <div id="detalleFactura"></div>
+    </div>
+
+    <script src="../assets/libs/html2canvas.min.js"></script>
+    <script src="../assets/libs/jspdf.min.js"></script>
+    <script src="../assets/data/productos.js"></script>
+    <script src="../assets/js/vendedor/ventas.js"></script>
+
+</body>
+</html>
