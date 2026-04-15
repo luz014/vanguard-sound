@@ -2,7 +2,9 @@ let lista = JSON.parse(localStorage.getItem("inventario")) || productos;
 
 const contenedor = document.getElementById("listaProductos");
 const busqueda = document.getElementById("busquedaInventario");
+
 busqueda.addEventListener("input", () => filtrar("todos"));
+
 
 function convertirBase64(file) {
     return new Promise((resolve, reject) => {
@@ -13,7 +15,9 @@ function convertirBase64(file) {
     });
 }
 
-// 🟢 MOSTRAR
+/* =========================
+   MOSTRAR PRODUCTOS
+========================= */
 function mostrar(listaMostrar) {
     contenedor.innerHTML = "";
 
@@ -39,7 +43,9 @@ function mostrar(listaMostrar) {
     });
 }
 
-// 💾 GUARDAR
+/* =========================
+   GUARDAR / ACTUALIZAR
+========================= */
 async function guardarProducto() {
     const id = document.getElementById("id").value;
     const nombre = document.getElementById("nombre").value;
@@ -51,7 +57,7 @@ async function guardarProducto() {
 
     let imagen = "";
 
-    // 🔴 VALIDACIONES
+    // VALIDACIONES
     if (!nombre || !categoria || !descripcion) {
         alert("Todos los campos son obligatorios");
         return;
@@ -67,32 +73,35 @@ async function guardarProducto() {
         return;
     }
 
-    // 🖼️ CONVERTIR IMAGEN
+    // IMAGEN
     if (imagenInput.files.length > 0) {
         imagen = await convertirBase64(imagenInput.files[0]);
     } else if (id) {
-        // mantener imagen anterior al editar
         const existente = lista.find(p => p.id == id);
-        imagen = existente.imagen;
+        imagen = existente ? existente.imagen : "";
     } else {
         alert("Debe subir una imagen");
         return;
     }
 
+    // EDITAR
     if (id) {
         const index = lista.findIndex(p => p.id == id);
 
-        lista[index] = {
-            id: parseInt(id),
-            nombre,
-            precio,
-            stock,
-            categoria,
-            descripcion,
-            imagen
-        };
+        if (index !== -1) {
+            lista[index] = {
+                id: Number(id),
+                nombre,
+                precio,
+                stock,
+                categoria,
+                descripcion,
+                imagen
+            };
+        }
 
     } else {
+        // NUEVO
         const nuevo = {
             id: Date.now(),
             nombre,
@@ -111,9 +120,14 @@ async function guardarProducto() {
     mostrar(lista);
 }
 
-// ✏️ EDITAR
 function editar(id) {
-    const p = lista.find(p => p.id === id);
+    console.log("CLICK EDITAR:", id);
+
+    const p = lista.find(x => x.id == id);
+
+    console.log("PRODUCTO ENCONTRADO:", p);
+
+    if (!p) return;
 
     document.getElementById("id").value = p.id;
     document.getElementById("nombre").value = p.nombre;
@@ -121,23 +135,26 @@ function editar(id) {
     document.getElementById("stock").value = p.stock;
     document.getElementById("categoria").value = p.categoria;
     document.getElementById("descripcion").value = p.descripcion;
-    document.getElementById("imagen").value = p.imagen;
+
+    document.getElementById("imagen").value = "";
+
+    document.getElementById("formulario").scrollIntoView({ behavior: "smooth" });
+
+    alert("Editando: " + p.nombre);
 }
 
-// ❌ ELIMINAR
 function eliminar(id) {
     if (!confirm("¿Eliminar producto?")) return;
 
-    lista = lista.filter(p => p.id !== id);
+    lista = lista.filter(p => p.id != id);
+
     localStorage.setItem("inventario", JSON.stringify(lista));
     mostrar(lista);
 }
 
-// 🔍 FILTROS
 function filtrar(tipo) {
     let listaFiltrada = [...lista];
 
-    // 🔍 búsqueda
     const texto = busqueda.value.toLowerCase();
 
     listaFiltrada = listaFiltrada.filter(p =>
@@ -146,7 +163,6 @@ function filtrar(tipo) {
         p.descripcion.toLowerCase().includes(texto)
     );
 
-    // 📦 filtros
     if (tipo === "bajo") {
         listaFiltrada = listaFiltrada.filter(p => p.stock < 5 && p.stock > 0);
     } else if (tipo === "sin") {
@@ -156,7 +172,6 @@ function filtrar(tipo) {
     mostrar(listaFiltrada);
 }
 
-// 🧹 LIMPIAR
 function limpiarFormulario() {
     document.getElementById("id").value = "";
     document.getElementById("nombre").value = "";
@@ -167,5 +182,10 @@ function limpiarFormulario() {
     document.getElementById("imagen").value = "";
 }
 
-// inicial
+
 mostrar(lista);
+
+window.editar = editar;
+window.eliminar = eliminar;
+window.guardarProducto = guardarProducto;
+window.filtrar = filtrar;
