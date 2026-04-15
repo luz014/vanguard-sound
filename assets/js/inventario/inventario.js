@@ -43,9 +43,6 @@ function mostrar(listaMostrar) {
     });
 }
 
-/* =========================
-   GUARDAR / ACTUALIZAR
-========================= */
 async function guardarProducto() {
     const id = document.getElementById("id").value;
     const nombre = document.getElementById("nombre").value;

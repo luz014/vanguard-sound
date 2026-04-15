@@ -8,6 +8,7 @@ const productos = [
         descripcion: "Guitarra eléctrica de alta calidad para rock y metal.",
         imagen: "../assets/img/guitarra.webp"
     },
+    
     {
         id: 2,
         nombre: "Batería Acústica",
@@ -15,8 +16,9 @@ const productos = [
         stock: 5,
         categoria: "Baterías",
         descripcion: "Batería completa ideal para práctica y presentaciones.",
-        imagen: "../assets/img/bateria.jpg"
+        imagen: "../assets/img/bateria.webp"
     },
+
     {
         id: 3,
         nombre: "Bajo Eléctrico",
@@ -24,6 +26,6 @@ const productos = [
         stock: 3,
         categoria: "Bajos",
         descripcion: "Bajo potente con excelente sonido grave.",
-        imagen: "../assets/img/bajo.jpg"
+        imagen: "../assets/img/bajo.webp"
     }
 ];
